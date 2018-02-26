@@ -84,7 +84,6 @@ RUN chmod +x /etc/service/shiny-server/run  \
     && chown -R shiny /var/log/shiny-server \
     && sed -i '113 a <h2><a href="./examples/">Other examples of Shiny application</a> </h2>' /srv/shiny-server/index.html
 
-    crosstalk
 
 # basic shiny functionality
 RUN apt-get install ncbi-blast+ \
