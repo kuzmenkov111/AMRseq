@@ -86,7 +86,7 @@ RUN chmod +x /etc/service/shiny-server/run  \
 
 
 # basic shiny functionality
-RUN apt-get install ncbi-blast+ \
+RUN apt-get install -y ncbi-blast+ \
 && R -e "install.packages('devtools', repos='https://cran.r-project.org/')" \
 && R -e "source("https://bioconductor.org/biocLite.R"); biocLite(); biocLite("Biostrings")" \
 && sudo su - -c "R -e \"install.packages('miniUI', repos='https://cran.r-project.org/');options(unzip = 'internal'); devtools::install_github('daattali/shinyjs')\"" \
