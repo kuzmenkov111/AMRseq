@@ -7,8 +7,7 @@ RUN (echo "deb http://cran.mtu.edu/bin/linux/ubuntu `cat /etc/container_environm
 
 ## Install some useful tools and dependencies for MRO
 RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
-	ca-certificates \
+	&& apt-get install -y ca-certificates \
 	curl \
         wget \
 	&& rm -rf /var/lib/apt/lists/*
