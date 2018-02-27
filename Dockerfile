@@ -14,17 +14,17 @@ RUN apt-get update \
 
 WORKDIR /home/docker
 # Download, valiate, and unpack
-RUN wget https://www.dropbox.com/s/xrkzdhm1cq0ll1q/microsoft-r-open-3.3.2.tar.gz?dl=1 -O microsoft-r-open-3.3.2.tar.gz \
-&& echo "817aca692adffe20e590fc5218cb6992f24f29aa31864465569057534bce42c7 microsoft-r-open-3.3.2.tar.gz" > checksum.txt \
+RUN wget https://www.dropbox.com/s/4wyiwm2ohl2dyv7/microsoft-r-open-3.4.3.tar.gz?dl=1 -O microsoft-r-open-3.4.3.tar.gz \
+&& echo "BF2CD35A11DB604B1FA8F5F0C0ACF0AE05756020D90FB3F6CBB639337EFCEE5B microsoft-r-open-3.4.3.tar.gz" > checksum.txt \
 	&& sha256sum -c --strict checksum.txt \
-	&& tar -xf microsoft-r-open-3.3.2.tar.gz \
+	&& tar -xf microsoft-r-open-3.4.3.tar.gz \
 	&& cd /home/docker/microsoft-r-open \
 	&& ./install.sh -a -u \
 	&& ls logs && cat logs/*
 
 # Clean up
 WORKDIR /home/docker
-RUN rm microsoft-r-open-3.3.2.tar.gz \
+RUN rm microsoft-r-open-3.4.3.tar.gz \
 	&& rm checksum.txt \
 && rm -r microsoft-r-open
 
@@ -58,7 +58,7 @@ RUN apt-get update && apt-get install -y \
     libnlopt-dev \
     build-essential
 
-COPY Makeconf /usr/lib64/microsoft-r/3.3/lib64/R/etc/Makeconf
+COPY Makeconf /usr/lib64/microsoft-r/3.4/lib64/R/etc/Makeconf
 
 #wget https://www.dropbox.com/s/hl0vx1f6rpfgxrx/shiny-server-1.5.3.838-amd64.deb?dl=1 -O shiny-server-1.5.3.838-amd64.deb
 
