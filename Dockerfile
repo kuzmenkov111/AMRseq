@@ -98,9 +98,7 @@ RUN apt-get install -y ncbi-blast+ \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('kuzmenkov111/rBLAST')\"" \
 && R -e "install.packages('data.table', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('future', repos='https://cran.r-project.org/')" \
-&& R -e "install.packages('foreach', repos='https://cran.r-project.org/')" \
-&& R -e "install.packages('doParallel', repos='https://cran.r-project.org/')" \
-&& R -e "install.packages('foreach', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('stringi', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('shinythemes', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('fst', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('msaR', repos='https://cran.r-project.org/')" \
