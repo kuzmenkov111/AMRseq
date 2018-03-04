@@ -104,7 +104,10 @@ RUN apt-get install -y ncbi-blast+ \
 && R -e "install.packages('msaR', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('shinyWidgets', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('shinyjqui', repos='https://cran.r-project.org/')"  \
-&& R -e "install.packages('shinycssloaders', repos='https://cran.r-project.org/')" 
+&& R -e "install.packages('shinycssloaders', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('dplyr', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('RColorBrewer', repos='https://cran.r-project.org/')" \
+&& sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('AdeelK93/collapsibleTree')\"" 
 
 
 
