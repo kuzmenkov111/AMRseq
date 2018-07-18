@@ -108,6 +108,12 @@ RUN apt-get install -y ncbi-blast+ \
 && R -e "install.packages('shinycssloaders', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('dplyr', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('RColorBrewer', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('stringr', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('ggplot2', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('ggrepel', repos='https://cran.r-project.org/')" \
+&& sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('ropensci/plotly')\""\
+&& sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('stefanedwards/lemon')\""\
+&& sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('kuzmenkov111/highcharter')\""\
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('AdeelK93/collapsibleTree'); devtools::install_github('emitanaka/shinycustomloader')\"" 
 
 
