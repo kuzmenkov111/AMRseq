@@ -87,6 +87,7 @@ RUN chmod +x /etc/service/shiny-server/run  \
     && sed -i '113 a <h2><a href="./examples/">Other examples of Shiny application</a> </h2>' /srv/shiny-server/index.html
 
 
+
 # basic shiny functionality
 RUN apt-get install -y ncbi-blast+ \
 && R -e "install.packages('curl', repos='https://cran.r-project.org/')" \
