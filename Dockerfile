@@ -60,7 +60,7 @@ RUN apt-get update && apt-get install -y \
     libnlopt-dev \
     build-essential
 
-COPY Makeconf /usr/lib64/microsoft-r/3.4/lib64/R/etc/Makeconf
+#COPY Makeconf /usr/lib64/microsoft-r/3.4/lib64/R/etc/Makeconf
 
 #wget https://www.dropbox.com/s/hl0vx1f6rpfgxrx/shiny-server-1.5.3.838-amd64.deb?dl=1 -O shiny-server-1.5.3.838-amd64.deb
 
