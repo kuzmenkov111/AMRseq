@@ -116,6 +116,7 @@ RUN apt-get install -y ncbi-blast+ \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('ropensci/plotly')\""\
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('stefanedwards/lemon')\""\
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('kuzmenkov111/highcharter')\""\
+&& R -e "install.packages('shinyjqui', repos='https://cran.r-project.org/')" \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('AdeelK93/collapsibleTree'); devtools::install_github('emitanaka/shinycustomloader')\"" 
 
 
