@@ -62,11 +62,16 @@ RUN apt-get update && apt-get install -y \
     build-essential
 
 
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+RUN apt-get update
+RUN apt-get install -y libudunits2-dev libgdal-dev libgeos-dev 
+
+
 RUN sudo apt-add-repository -y ppa:webupd8team/java \
 && apt-get update && echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections && apt-get install -y oracle-java8-installer \
 && R -e "Sys.setenv(JAVA_HOME = '/usr/lib/jvm/java-8-oracle/jre')"
 RUN sudo java -version
-
 #COPY Makeconf /usr/lib64/microsoft-r/3.4/lib64/R/etc/Makeconf
 
 #wget https://www.dropbox.com/s/hl0vx1f6rpfgxrx/shiny-server-1.5.3.838-amd64.deb?dl=1 -O shiny-server-1.5.3.838-amd64.deb
