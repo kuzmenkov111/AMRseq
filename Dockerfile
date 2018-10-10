@@ -14,10 +14,10 @@ RUN apt-get update \
 
 WORKDIR /home/docker
 # Download, valiate, and unpack
-RUN wget https://www.dropbox.com/s/k42g2ra7ll46omp/microsoft-r-open-3.5.0.tar.gz?dl=1 -O microsoft-r-open-3.5.0.tar.gz \
-&& echo "7E1091587429C1545804B514269F4B0C588B85EC86052B512AAFD491DB797D93 microsoft-r-open-3.5.0.tar.gz" > checksum.txt \
+RUN wget https://www.dropbox.com/s/uz4e4d0frk21cvn/microsoft-r-open-3.5.1.tar.gz?dl=1 -O microsoft-r-open-3.5.1.tar.gz \
+&& echo "9791AAFB94844544930A1D896F2BF1404205DBF2EC059C51AE75EBB3A31B3792 microsoft-r-open-3.5.1.tar.gz" > checksum.txt \
 	&& sha256sum -c --strict checksum.txt \
-	&& tar -xf microsoft-r-open-3.5.0.tar.gz \
+	&& tar -xf microsoft-r-open-3.5.1.tar.gz \
 	&& cd /home/docker/microsoft-r-open \
 	&& ./install.sh -a -u \
 	&& ls logs && cat logs/*
@@ -25,7 +25,7 @@ RUN wget https://www.dropbox.com/s/k42g2ra7ll46omp/microsoft-r-open-3.5.0.tar.gz
 
 # Clean up
 WORKDIR /home/docker
-RUN rm microsoft-r-open-3.5.0.tar.gz \
+RUN rm microsoft-r-open-3.5.1.tar.gz \
 	&& rm checksum.txt \
 && rm -r microsoft-r-open
 
@@ -42,7 +42,8 @@ RUN apt-get update && apt-get install -y \
     libssh2-1-dev \
     libssl1.0.0 \
     libxml2-dev \
-    libssl-dev
+    libssl-dev \
+    cron
 
 # system library dependency for the euler app
 RUN apt-get update && apt-get install -y \
@@ -64,9 +65,9 @@ RUN apt-get update && apt-get install -y \
 
 #wget https://www.dropbox.com/s/hl0vx1f6rpfgxrx/shiny-server-1.5.3.838-amd64.deb?dl=1 -O shiny-server-1.5.3.838-amd64.deb
 
-RUN wget https://www.dropbox.com/s/zjydeqye63dm7ra/shiny-server-1.5.5.872-amd64.deb?dl=1 -O shiny-server-1.5.5.872-amd64.deb \
-&& dpkg -i --force-depends shiny-server-1.5.5.872-amd64.deb \
-          && rm shiny-server-1.5.5.872-amd64.deb && \
+RUN wget https://www.dropbox.com/s/8v07th1mur5m91n/shiny-server-1.5.9.923-amd64.deb?dl=1 -O shiny-server-1.5.9.923-amd64.deb \
+&& dpkg -i --force-depends shiny-server-1.5.9.923-amd64.deb \
+          && rm shiny-server-1.5.9.923-amd64.deb && \
     R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.com/')" \
           && mkdir -p /srv/shiny-server; sync  \
           && mkdir -p  /srv/shiny-server/examples; sync  
@@ -117,6 +118,8 @@ RUN apt-get install -y ncbi-blast+ \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('stefanedwards/lemon')\""\
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('kuzmenkov111/highcharter')\""\
 && R -e "install.packages('shinyjqui', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('fs', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('gggenes', repos='https://cran.r-project.org/')" \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('AdeelK93/collapsibleTree'); devtools::install_github('emitanaka/shinycustomloader')\"" 
 
 
