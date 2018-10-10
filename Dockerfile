@@ -61,6 +61,12 @@ RUN apt-get update && apt-get install -y \
     libnlopt-dev \
     build-essential
 
+
+RUN sudo apt-add-repository -y ppa:webupd8team/java \
+&& apt-get update && echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections && apt-get install -y oracle-java8-installer \
+&& R -e "Sys.setenv(JAVA_HOME = '/usr/lib/jvm/java-8-oracle/jre')"
+RUN sudo java -version
+
 #COPY Makeconf /usr/lib64/microsoft-r/3.4/lib64/R/etc/Makeconf
 
 #wget https://www.dropbox.com/s/hl0vx1f6rpfgxrx/shiny-server-1.5.3.838-amd64.deb?dl=1 -O shiny-server-1.5.3.838-amd64.deb
@@ -121,6 +127,10 @@ RUN apt-get install -y ncbi-blast+ \
 && R -e "install.packages('fs', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('gggenes', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('cronR', repos='https://cran.r-project.org/')" \
+&& R CMD javareconf \
+&& R -e "Sys.setenv(JAVA_HOME = '/usr/lib/jvm/java-8-oracle/jre'); install.packages('rJava', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('mailR', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('curl', repos='https://cran.r-project.org/')" \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('AdeelK93/collapsibleTree'); devtools::install_github('emitanaka/shinycustomloader')\"" 
 
 
