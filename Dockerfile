@@ -120,6 +120,7 @@ RUN apt-get install -y ncbi-blast+ \
 && R -e "install.packages('shinyjqui', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('fs', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('gggenes', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('cronR', repos='https://cran.r-project.org/')" \
 && sudo su - -c "R -e \"options(unzip = 'internal'); devtools::install_github('AdeelK93/collapsibleTree'); devtools::install_github('emitanaka/shinycustomloader')\"" 
 
 
