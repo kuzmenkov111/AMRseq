@@ -132,6 +132,7 @@ RUN apt-get install -y ncbi-blast+ \
 && R -e "install.packages('fs', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('gggenes', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('cronR', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('promises', repos='https://cran.r-project.org/')" \
 && R CMD javareconf \
 && R -e "Sys.setenv(JAVA_HOME = '/usr/lib/jvm/java-8-oracle/jre'); install.packages('rJava', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('mailR', repos='https://cran.r-project.org/')" \
