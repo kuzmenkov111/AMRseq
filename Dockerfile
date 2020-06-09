@@ -91,8 +91,8 @@ RUN R -e "install.packages('data.table', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('fs', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('gggenes', repos='https://cran.r-project.org/')" \
 && R -e "install.packages('promises', repos='https://cran.r-project.org/')" \
-&& R -e "install.packages('ipc', repos='https://cran.r-project.org/')"
-
+&& R -e "install.packages('ipc', repos='https://cran.r-project.org/')" \
+&& R -e "install.packages('msaR', repos='https://cran.r-project.org/')"
 
 VOLUME /home/dockerapp/data
 VOLUME /home/dockerapp/task
